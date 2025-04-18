@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Cinzel", serif;
+  background-color: #1a1a1a;
+  color: #f0e6d2;
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #bfa181;
+  color: #1a1a1a;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #a68d6d;
+}
+
+.create-btn {
+  display: block;
+  margin: 20px auto;
+}
+
+.crewmate-card {
+  background-color: #2e2e2e;
+  border: 2px solid #bfa181;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+}
+
+.crewmate-card h2 {
+  margin-top: 0;
+}
+
+.crewmate-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.crewmate-card li {
+  margin: 5px 0;
+}
+
+.card-links {
+  margin-top: 10px;
+}
+
+.card-links a {
+  margin: 0 10px;
+  color: #bfa181;
+  text-decoration: none;
+}
+
+.card-links a:hover {
+  text-decoration: underline;
+}
+
+.attribute-selector {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.attribute-selector select {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.attribute-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.attr-btn {
+  background-color: #444;
+  color: #f0e6d2;
+  border: 1px solid #bfa181;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.attr-btn.selected {
+  background-color: #bfa181;
+  color: #1a1a1a;
+}
+
+.stats-panel {
+  background-color: #2e2e2e;
+  border: 2px solid #bfa181;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.stats-panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stats-panel li {
+  margin: 5px 0;
+}

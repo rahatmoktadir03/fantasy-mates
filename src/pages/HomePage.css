@@ -1,0 +1,30 @@
+.home {
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.intro {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.home-buttons {
+  margin-bottom: 20px;
+}
+
+.got-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.got-gallery img {
+  width: 150px;
+  border-radius: 10px;
+  border: 2px solid #bfa181;
+}
