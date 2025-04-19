@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+import { supabase } from "../supabase/client";
+import { FaInfoCircle } from "react-icons/fa";
 
 export default function DetailPage() {
   const { id } = useParams();
-  const [crewmate, setCrewmate] = useState(null);
+  const [c, setC] = useState(null);
 
   useEffect(() => {
-    const fetchCrewmate = async () => {
+    (async () => {
       const { data } = await supabase
         .from("crewmates")
         .select("*")
         .eq("id", id)
         .single();
-
-      setCrewmate(data);
-    };
-
-    fetchCrewmate();
+      setC(data);
+    })();
   }, [id]);
 
-  if (!crewmate) return <p>Loading...</p>;
-
+  if (!c) return <p>Loading…</p>;
   return (
     <div className="detail-page">
-      <h2>{crewmate.name}</h2>
+      <h2>
+        <FaInfoCircle /> {c.name}
+      </h2>
       <p>
-        <strong>Category:</strong> {crewmate.category}
+        <strong>Class:</strong> {c.category}
       </p>
       <p>
-        <strong>Attributes:</strong> {crewmate.attributes.join(", ")}
+        <strong>Attributes:</strong> {c.attributes.join(", ")}
       </p>
-      <Link to={`/edit/${crewmate.id}`} className="btn edit-link">
+      <Link to={`/edit/${c.id}`} className="btn edit-link">
         Edit
       </Link>
     </div>

@@ -127,3 +127,15 @@ h3 {
 .stats-panel li {
   margin: 5px 0;
 }
+
+.info {
+  text-align: center;
+  color: #bfa181;
+  margin-top: 2rem;
+}
+
+.error {
+  text-align: center;
+  color: #bf4040;
+  margin-top: 2rem;
+}

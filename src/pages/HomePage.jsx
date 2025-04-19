@@ -21,18 +21,9 @@ export default function HomePage() {
       </div>
 
       <div className="got-gallery">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/en/5/52/Daenerys_Targaryen-Mother_of_Dragons.jpg"
-          alt="Daenerys"
-        />
-        <img
-          src="https://upload.wikimedia.org/wikipedia/en/1/16/Jon_Snow-Kit_Harington.jpg"
-          alt="Jon Snow"
-        />
-        <img
-          src="https://upload.wikimedia.org/wikipedia/en/e/e9/Arya_Stark-Maisie_Williams.jpg"
-          alt="Arya Stark"
-        />
+        <img src="daenerys_targaryen.jpg" alt="Daenerys" />
+        <img src="jon_snow.jpg" alt="Jon Snow" />
+        <img src="tyrion_lannister.jpg" alt="Tyrion Lannister" />
       </div>
     </div>
   );

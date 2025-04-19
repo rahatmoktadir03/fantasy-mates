@@ -1,18 +1,20 @@
-export const calculateStats = (crewmates) => {
-  const attributeCounts = {};
-  let total = 0;
+export function calculateStats(crewmates) {
+  const countByCat = {};
+  let totalAttrs = 0;
+  const attrCounts = {};
 
   crewmates.forEach((c) => {
-    c.attributes.forEach((attr) => {
-      attributeCounts[attr] = (attributeCounts[attr] || 0) + 1;
-      total += 1;
+    countByCat[c.category] = (countByCat[c.category] || 0) + 1;
+    c.attributes.forEach((a) => {
+      attrCounts[a] = (attrCounts[a] || 0) + 1;
+      totalAttrs++;
     });
   });
 
-  const percentages = {};
-  for (const attr in attributeCounts) {
-    percentages[attr] = ((attributeCounts[attr] / total) * 100).toFixed(1);
-  }
+  // overall “power” = total attributes selected / crewmate count
+  const power = crewmates.length
+    ? Math.round((totalAttrs / crewmates.length) * 10)
+    : 0;
 
-  return percentages;
-};
+  return { countByCat, attrCounts, power };
+}

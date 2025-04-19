@@ -1,62 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+import { supabase } from "../supabase/client";
 import AttributeSelector from "../components/AttributeSelector";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 export default function EditCrewmate() {
   const { id } = useParams();
+  const nav = useNavigate();
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [attributes, setAttributes] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCrewmate = async () => {
+    (async () => {
       const { data } = await supabase
         .from("crewmates")
         .select("*")
         .eq("id", id)
         .single();
-
-      setName(data.name);
-      setCategory(data.category);
-      setAttributes(data.attributes);
-    };
-
-    fetchCrewmate();
+      if (data) {
+        setName(data.name);
+        setCategory(data.category);
+        setAttributes(data.attributes);
+      }
+    })();
   }, [id]);
 
-  const handleUpdate = async () => {
+  const update = async () => {
     await supabase
       .from("crewmates")
       .update({ name, category, attributes })
       .eq("id", id);
-    navigate("/summary");
+    nav("/summary");
   };
-
-  const handleDelete = async () => {
+  const remove = async () => {
     await supabase.from("crewmates").delete().eq("id", id);
-    navigate("/summary");
+    nav("/summary");
   };
 
   return (
     <div className="edit-page">
-      <h2>Edit Crewmate</h2>
+      <h2>
+        <FaEdit /> Edit Crewmate
+      </h2>
       <input value={name} onChange={(e) => setName(e.target.value)} />
-
       <AttributeSelector
         category={category}
-        attributes={attributes}
         setCategory={setCategory}
+        attributes={attributes}
         setAttributes={setAttributes}
       />
-
       <div className="edit-actions">
-        <button onClick={handleUpdate} className="btn">
+        <button className="btn" onClick={update}>
           Update
         </button>
-        <button onClick={handleDelete} className="btn danger">
-          Delete
+        <button className="btn danger" onClick={remove}>
+          <FaTrash /> Delete
         </button>
       </div>
     </div>

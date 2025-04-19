@@ -1,20 +1,32 @@
 import React from "react";
 
 export default function StatsPanel({ stats }) {
-  const total = Object.values(stats.classCounts).reduce((a, b) => a + b, 0);
-
+  const { countByCat, attrCounts, power } = stats;
   return (
     <div className="stats-panel">
-      <h3>Party Overview</h3>
-      <ul>
-        {Object.entries(stats.classCounts).map(([category, count]) => (
-          <li key={category}>
-            {category}: {count} ({((count / total) * 100).toFixed(1)}%)
-          </li>
-        ))}
-      </ul>
-      <p>
-        <strong>Party Strength:</strong> {stats.successScore}/100
+      <h4>Party Overview</h4>
+      <div className="stats-section">
+        <strong>By Class:</strong>
+        <ul>
+          {Object.entries(countByCat).map(([c, n]) => (
+            <li key={c}>
+              {c}: {n}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="stats-section">
+        <strong>Attr Frequencies:</strong>
+        <ul>
+          {Object.entries(attrCounts).map(([a, n]) => (
+            <li key={a}>
+              {a}: {n}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p className="power">
+        <strong>Power Score:</strong> {power}/100
       </p>
     </div>
   );
